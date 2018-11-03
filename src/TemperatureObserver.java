@@ -25,14 +25,8 @@ public class TemperatureObserver implements Observer {
         public void update(ArrayList<TemperatureSensor> l) {
 
             this.temperatureList = l;
-            //WeatherStation w = ((WeatherStation) subject);
-            /*WeatherStation w = new WeatherStation();
-            temperatureList = w.getTemperaturelist();
-            w.fillTemperaturelist();
-            */
-            //setTemperature();
-
         }
+
 
         public void printChart()
         {
@@ -45,10 +39,5 @@ public class TemperatureObserver implements Observer {
             chart.setVisible( true );
         }
 
-        public void updadeChart()
-        {
-            chart.createDataset();
-            chart.repaint();
-        }
 
 }

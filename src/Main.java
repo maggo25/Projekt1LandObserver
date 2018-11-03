@@ -30,7 +30,7 @@ public class Main {
         w.fillTemperaturelist();
         w.registerObserver(t1);
         w.registerObserver(t2);
-        w.notifyObserver(al);
+        //w.notifyObserver(al);
 
         //((TemperatureObserver) t).printChart();
 
@@ -54,22 +54,36 @@ public class Main {
                         w.fillTemperaturelist();;
                         al = w.getTemperaturelist();
                         w.notifyObserver(al);
-                        w.printTemperatureList();
-                        //((TemperatureObserver) t).printChart();
-                        ((TemperatureObserver) t1).printChart();
-                        ((PDFGenerator) t2).generatePdf();
                         temp = new Timestamp(System.currentTimeMillis());
                         time = temp.getTime();
+
+                        ((TemperatureObserver) t1).printChart();
+                        ((PDFGenerator) t2).generatePdf();
+
                     }else
                     {
                         System.out.println("Das File hat sich nicht verändert!");
                     }
                     break;
                 case "2":
+                    if (file.lastModified() > time) {
+                        w.fillTemperaturelist();;
+                        al = w.getTemperaturelist();
+                        w.notifyObserver(al);
+                        temp = new Timestamp(System.currentTimeMillis());
+                        time = temp.getTime();
+                    }
                     ((PDFGenerator) t2).generatePdf();
 
                     break;
                 case "3":
+                    if (file.lastModified() > time) {
+                        w.fillTemperaturelist();;
+                        al = w.getTemperaturelist();
+                        w.notifyObserver(al);
+                        temp = new Timestamp(System.currentTimeMillis());
+                        time = temp.getTime();
+                    }
                     ((TemperatureObserver) t1).printChart();
                     break;
                 case "4":

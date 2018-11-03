@@ -15,6 +15,7 @@ public class App {
         w.printTemperatureList();
 
         TemperatureObserver t = new TemperatureObserver();
+        w.registerObserver(t);
 
 
         //t.update();
