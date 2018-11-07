@@ -13,7 +13,6 @@ public class Main {
     /**
      * Mainmethode: Aufruf der einzelnen Methoden und Menüausgabe
      * @param args Laufzeitargumente werden hier nicht verwendet
-     * @throws InterruptedException
      */
     public static void main(String[] args) {
 
