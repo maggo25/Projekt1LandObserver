@@ -29,4 +29,5 @@ public class TemperatureSensor {
     public void setTemperature(Double temperature) {
         this.temperature = temperature;
     }
+
 }
