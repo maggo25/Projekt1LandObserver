@@ -21,14 +21,21 @@ public class TemperatureObserver implements Observer {
         public TemperatureObserver()
         {}
 
-        @Override
-        public void update(ArrayList<TemperatureSensor> l) {
+
+    /**
+     * Wird aufgerufen wenn sich das konkrete Subjekt verändert hat (in diesem Beispiel ist dies die WetterStation)
+     * @param l ArrayListe mit TemperaturSensor Werten
+     */
+    @Override
+    public void update(ArrayList<TemperatureSensor> l) {
 
             this.temperatureList = l;
         }
 
-
-        public void printChart()
+    /**
+     * Chart erstellen
+     */
+    public void printChart()
         {
             this.chart = new CharBuilder( temperatureList,
                     "Auswertung" ,

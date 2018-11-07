@@ -1,6 +1,9 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author Markus
+ */
 public class TemperatureSensor {
 
     private String timestamp;

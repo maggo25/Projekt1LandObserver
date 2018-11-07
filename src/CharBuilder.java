@@ -41,7 +41,7 @@ public class CharBuilder extends ApplicationFrame { //implements Observer {
 
 
         ChartPanel chartPanel = new ChartPanel(lineChart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(1000, 550));
+        chartPanel.setPreferredSize(new java.awt.Dimension(2000, 1300));
         setContentPane(chartPanel);
 
 

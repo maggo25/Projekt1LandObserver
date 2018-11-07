@@ -20,6 +20,10 @@ import java.sql.Array;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 
+/**
+ * Erzeugen eines PDF's mit den Temperaturwerten welche vom File eingelesen werden
+ * @author Markus
+ */
 public class PDFGenerator implements Observer {
 
     //private Subject subject;
@@ -38,6 +42,7 @@ public class PDFGenerator implements Observer {
     public PDFGenerator()
     {}
 
+
     public String temperaturlistToString()
     {
         String out = "Die Liste ist leer!";
@@ -54,6 +59,13 @@ public class PDFGenerator implements Observer {
         return null;
     }
 
+    /**
+     * Konvertierung von der ArrayList zu Array
+     * Die Einträge der ArrayList werden auf einein String konvertiert und es wird jeweils
+     * Ein TemperaturSensor-Objekt mit einem Strichpunkt abgeschlossen um diese Strings dann wieder aufzuteilen und
+     * jedes Objekt als ein Array Eintrag zu speichern.
+     * @return
+     */
     public String[] listToArray()
     {
         String out = "keine Werte vorhanden!";
@@ -69,30 +81,32 @@ public class PDFGenerator implements Observer {
         {
             for (int i = 0; i<groesse; i++)
             {
-
                 return temp.split(";");
-
             }
-
         }
         return null;
     }
 
+    /**
+     * Wert eines Array's an einer bestimmten Stelle zurückliefern.
+     * Wird benötigt um diese Werte im PDF Zeilengetrennt abzugeben.
+     * @param index Index
+     * @param a Array
+     * @return String mit Inhalt des Arrays an einem Besimmtem Index
+     */
     public String arrayToString(int index, String[] a)
     {
         return a[index];
     }
 
-
-
-
+    /**
+     * Erstellen von PDF's.
+     */
     public void generatePdf() {
 
         PDDocument document = new PDDocument();
 
         PDPage page = new PDPage(PDRectangle.A4);
-
-
 
         document.addPage( page );
         PDFont font = PDType1Font.HELVETICA;
@@ -125,43 +139,5 @@ public class PDFGenerator implements Observer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
-        /*
-        PDDocument document = new PDDocument();
-        document.addPage(new PDPage());
-        PDType1Font font = PDType1Font.HELVETICA_BOLD;
-        try {
-
-            document.save("C:/test/meinPDF.pdf");
-            System.out.println("PDF created");
-            document.close();
-            File file = new File("C://test//meinPDF.pdf");
-            PDDocument doc = document.load(file);
-            PDPage page = doc.getPage(1);
-            PDPageContentStream contentStream = new PDPageContentStream(doc, page);
-            contentStream.beginText();
-            contentStream.newLineAtOffset(25, 700);
-
-            contentStream.setFont(font, 12);
-            contentStream.showText("text");
-
-            contentStream.endText();
-            contentStream.close();
-            doc.save("Path");
-            doc.close();
-
-
-        } catch (IOException e) {
-            System.out.println("Es ist ein Fehler aufgetreten");
-            e.printStackTrace();
-
-        }
-*/
-
     }
-
-
-
 }

@@ -10,7 +10,12 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    /**
+     * Mainmethode: Aufruf der einzelnen Methoden und Menüausgabe
+     * @param args Laufzeitargumente werden hier nicht verwendet
+     * @throws InterruptedException
+     */
+    public static void main(String[] args) {
 
         ArrayList<TemperatureSensor> al = new ArrayList<>();
 

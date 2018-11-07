@@ -11,6 +11,10 @@ import java.util.Iterator;
 //import java.util.GregorianCalendar;
 //import java.util.Locale;
 
+/**
+ * Einlesen der Temperaturwerte, hinzufügen zur Liste und Observer benachrichtigen
+ * @author Markus
+ */
 public class WeatherStation implements Subject {
 
     private ArrayList<Observer> observerlist;
@@ -23,27 +27,42 @@ public class WeatherStation implements Subject {
     }
 
 
-
+    /**
+     * Hinzufügen eines Observers zur Observerliste
+     * @param o Observerobjekt welches in die Observerliste hinzugefügt wird.
+     */
     public void registerObserver(Observer o) {
         observerlist.add(o);
         this.notifyObserver(this.temperaturelist);
     }
 
+    /**
+     * Aus der Observerliste entfernen
+     * @param o Observerobjekt welches aus der Observerliste entfernt wird
+     */
     public void deregisterObserver(Observer o) {
         observerlist.remove(o);
     }
 
+    /**
+     * Observer benachrichtigen
+     * In diesem Beispiel genügt es nur die ArrayList weiterzugeben. Normalerweise wird das konkrete Subjekt mitgeliefert
+     * @param l TemperaturSensor Liste wird weitergegeben
+     */
     public void notifyObserver(ArrayList<TemperatureSensor> l) {
         for (Observer o : observerlist) {
             o.update(l);
         }
     }
 
+
     public ArrayList<TemperatureSensor> getTemperaturelist() {
         return temperaturelist;
     }
 
-
+    /**
+     * Liste der TemperaturSensor Werte auf Kommandozeile ausgeben.
+     */
     public void printTemperatureList() {
         for (TemperatureSensor s : temperaturelist) {
             System.out.println("Temperatur: " + s.getTemperature());
@@ -52,6 +71,9 @@ public class WeatherStation implements Subject {
         }
     }
 
+    /**
+     * Alle Werte aus der Liste löschen
+     */
     public void removeAllFromTemperaturlist()
     {
 
@@ -63,6 +85,10 @@ public class WeatherStation implements Subject {
 
     }
 
+    /**
+     * Temperaturwerte aus der List löschen und alle Werte neu vom File einlesen.
+     * Das Einlesen von der Datei geschieht mittels dem BufferdReader
+     */
     public void fillTemperaturelist() {
 
             if (temperaturelist != null)
